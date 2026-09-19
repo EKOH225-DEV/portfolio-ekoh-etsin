@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Portfolio de EKOH ETSIN, développeur Full Stack Junior." />
+    <title>EKOH ETSIN | Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <canvas class="code-rain" aria-hidden="true"></canvas>
+    <div class="whatsapp-widget">
+      <button class="whatsapp-toggle" type="button" aria-expanded="false" aria-controls="whatsapp-chat">
+        <span class="whatsapp-icon">◈</span>
+        <span class="whatsapp-toggle__label">Discutons</span>
+      </button>
+      <section class="whatsapp-chat" id="whatsapp-chat" aria-hidden="true">
+        <div class="whatsapp-chat__header">
+          <div>
+            <strong>EKOH ETSIN</strong>
+            <span>Disponible sur WhatsApp</span>
+          </div>
+          <button class="whatsapp-close" type="button" aria-label="Fermer la conversation">×</button>
+        </div>
+        <div class="whatsapp-chat__body">
+          <p class="whatsapp-message">Bonjour ! Comment puis-je vous aider ?</p>
+          <p class="whatsapp-status" role="status" aria-live="polite"></p>
+        </div>
+        <form class="whatsapp-chat__form">
+          <label class="sr-only" for="whatsapp-message">Votre message</label>
+          <input id="whatsapp-message" name="message" type="text" placeholder="Écrire un message..." autocomplete="off" required />
+          <div class="contact-channel" role="group" aria-label="Choisir le canal de contact">
+            <button class="contact-channel__button is-selected" type="button" data-channel="whatsapp">WhatsApp</button>
+            <button class="contact-channel__button" type="button" data-channel="email">Email</button>
+          </div>
+          <button type="submit" aria-label="Envoyer le message">➤</button>
+        </form>
+      </section>
+    </div>
+    <header class="site-header">
+      <nav class="nav container">
+        <a href="#home" class="brand"><span class="brand-mark">&lt;/&gt;</span> EKOH <span>ETSIN</span></a>
+        <ul class="nav__links">
+          <li><a href="#about">À propos</a></li>
+          <li><a href="#skills">Compétences</a></li>
+          <li><a href="#projects">Projets</a></li>
+          <li><a href="#experience">Parcours</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><a class="nav-cv" href="#contact">CV ↗</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section id="home" class="hero">
+        <div class="container hero__wrap hero__wrap--centered">
+          <div class="hero__content">
+            <div class="hero__tag">● Disponible pour opportunités</div>
+            <h1>
+              EKOH ETSIN
+            </h1>
+            <h2 class="hero-subtitle">Développeur Web & Étudiant en Informatique</h2>
+            <p class="hero__text">
+              Je conçois et développe des expériences web modernes, performantes et accessibles.
+            </p>
+            <div class="hero__actions">
+              <a href="#projects" class="btn btn--primary">Voir mes projets</a>
+              <a href="#contact" class="btn btn--secondary">Me contacter</a>
+            </div>
+
+            <div class="hero__stats">
+              <div class="stat">
+                <strong>2+</strong>
+                <span>années d'apprentissage</span>
+              </div>
+              <div class="stat">
+                <strong>5+</strong>
+                <span>projets concrets</span>
+              </div>
+              <div class="stat">
+                <strong>100%</strong>
+                <span>créativité & sérieux</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <section id="about" class="section about-section">
+        <div class="container about-grid">
+          <div>
+            <p class="section-tag">À propos</p>
+            <h2>Mon parcours et ma philosophie</h2>
+            <img class="about-photo" src="assets/images/profile.png" alt="Portrait de EKOH ETSIN" />
+          </div>
+          <div class="about-copy">
+            <p>
+              Étudiant passionné en informatique, je me spécialise dans le développement web front-end et back-end.
+              Curieux et autodidacte, je construis des projets concrets pour transformer mes connaissances en compétences réelles.
+            </p>
+            <p>
+              Mon objectif : créer des solutions web élégantes qui répondent à de vrais problèmes, avec une attention
+              particulière portée au code, à la performance et à l’expérience utilisateur.
+            </p>
+            <div class="about-stats">
+              <div><strong>2+</strong><span>Années d'études</span></div>
+              <div><strong>15+</strong><span>Projets personnels</span></div>
+              <div><strong>100%</strong><span>Engagé et curieux</span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="skills" class="section section--dark">
+        <div class="container">
+          <p class="section-tag">Compétences</p>
+          <h2>Ma boîte à outils techniques</h2>
+          <div class="skills-grid">
+            <div class="skill-card">
+              <h3>▣ &nbsp; Front-end</h3>
+              <ul class="tag-list"><li>HTML</li><li>CSS</li><li>JavaScript</li><li>TypeScript</li><li>Tailwind CSS</li></ul>
+            </div>
+            <div class="skill-card">
+              <h3>▤ &nbsp; Back-end</h3>
+              <ul class="tag-list"><li>Python</li><li>MySQL</li><li>Node.js</li><li>Express</li><li>API Integration</li></ul>
+            </div>
+            <div class="skill-card">
+              <h3>▣ &nbsp; Outils & Environnement</h3>
+              <ul class="tag-list">
+                <li>Git</li>
+                <li>GitHub</li>
+                <li>Figma</li>
+                <li>VS Code</li>
+                <li>Terminal</li>
+                <li>Word</li>
+                <li>Excel</li>
+                <li>PowerPoint</li>
+                <li>Maîtrise de l'IA</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="projects" class="section">
+        <div class="container">
+          <p class="section-tag">Projets</p>
+          <h2>Quelques réalisations qui illustrent mon travail.</h2>
+          <div class="project-grid">
+            <article class="project-card">
+              <div class="project-card__top">
+                <span>Projet web</span>
+                <span>2026</span>
+              </div>
+              <h3>Portfolio personnel</h3>
+              <p>Un portfolio moderne pour présenter mon profil, mes compétences et mes projets professionnels.</p>
+              <ul>
+                <li>HTML</li>
+                <li>CSS</li>
+                <li>JavaScript</li>
+              </ul>
+              <a class="project-link" href="#contact">Voir le projet ↗</a>
+            </article>
+            <article class="project-card">
+              <div class="project-card__top">
+                <span>Application</span>
+                <span>2025</span>
+              </div>
+              <h3>Gestion de tâches</h3>
+              <p>Une interface pour organiser, suivre et gérer des tâches avec une logique simple et claire.</p>
+              <ul>
+                <li>Python</li>
+                <li>MySQL</li>
+                <li>UI</li>
+              </ul>
+              <a class="project-link" href="#contact">Voir le projet ↗</a>
+            </article>
+            <article class="project-card">
+              <div class="project-card__top">
+                <span>Projet créatif</span>
+                <span>2025</span>
+              </div>
+              <h3>Landing page</h3>
+              <p>Une page promotionnelle conçue pour présenter une idée, un service ou une offre numérique.</p>
+              <ul>
+                <li>Responsive</li>
+                <li>Design</li>
+                <li>UX</li>
+              </ul>
+              <a class="project-link" href="#contact">Voir le projet ↗</a>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="experience" class="section section--dark">
+        <div class="container timeline-wrap">
+          <p class="section-tag">Parcours</p>
+          <h2>Mon apprentissage et mon développement.</h2>
+          <div class="timeline timeline--line">
+            <div class="timeline__item">
+              <span class="timeline__year">2024</span>
+              <div>
+                <h3>Apprentissage autodidacte</h3>
+                <p>Approfondissement des bases du web et de la programmation logicielle.</p>
+              </div>
+            </div>
+            <div class="timeline__item">
+              <span class="timeline__year">2025</span>
+              <div>
+                <h3>Projets pratiques</h3>
+                <p>Création de mini-applications et d’interfaces pour développer des compétences concrètes.</p>
+              </div>
+            </div>
+            <div class="timeline__item">
+              <span class="timeline__year">2026</span>
+              <div>
+                <h3>Portfolio & objectif professionnel</h3>
+                <p>Bâtir une présence en ligne solide pour viser le freelance et un poste junior.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" class="section">
+        <div class="container contact-box">
+          <p class="section-tag">Contact</p>
+          <h2>Discutons de ton prochain projet.</h2>
+          <p>
+            Je suis ouvert aux opportunités de collaboration, aux missions freelance et aux postes junior.
+            N’hésite pas à me contacter pour échanger.
+          </p>
+          <div class="contact-layout">
+            <div class="contact-links">
+              <a href="mailto:etsin.ekohdev@gmail.com">✉ &nbsp; etsin.ekohdev@gmail.com</a>
+              <a href="https://wa.me/2250555595675" target="_blank" rel="noreferrer">◈ &nbsp; WhatsApp</a>
+              <a href="https://github.com" target="_blank" rel="noreferrer">◉ &nbsp; github.com/ekoh-etsin</a>
+            </div>
+            <form class="contact-form" action="https://formspree.io/f/mzezznqe" method="POST">
+              <label>Nom complet<input type="text" name="name" placeholder="Votre nom" /></label>
+              <label>Email<input type="email" name="email" placeholder="votre@email.com" /></label>
+              <label class="form-message">Message<textarea name="message" placeholder="Bonjour, je souhaiterais échanger avec vous concernant un projet..."></textarea></label>
+              <p class="contact-form__status" role="status" aria-live="polite"></p>
+              <button class="btn btn--primary" type="submit">Envoyer le message</button>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer__content footer__content--stacked">
+        <p>© 2026 EKOH ETSIN</p>
+        <div class="footer__contact">
+          <a href="tel:+2250555595675">+225 0555585675</a>
+          <a href="https://wa.me/2250555585675" target="_blank" rel="noreferrer">WhatsApp</a>
+          <a href="mailto:etsin.ekohdev@gmail.com">etsin.ekohdev@gmail.com</a>
+        </div>
+      </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+  </body>
+</html>
