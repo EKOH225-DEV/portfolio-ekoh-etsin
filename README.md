@@ -1,6 +1,6 @@
-# Portfolio EKOH ETSIN
+# Portfolio ETSIN EKOH
 
-Portfolio de Francis EKOH ETSIN, développeur agentique (web, données et IA) à Abidjan.
+Portfolio de ETSIN EKOH, développeur agentique (web, données et IA) à Abidjan.
 
 🌐 **En ligne** : [ekoh225-dev.github.io/portfolio-ekoh-etsin](https://ekoh225-dev.github.io/portfolio-ekoh-etsin/)
 

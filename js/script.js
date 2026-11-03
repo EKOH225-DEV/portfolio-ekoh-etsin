@@ -8,7 +8,7 @@ const initializePortfolio = () => {
   const emailLink = document.querySelector('.contact-direct__link[data-channel="email"]');
   const whatsappNumber = '2250555585675';
   const contactEmail = 'etsin.ekohdev@gmail.com';
-  const defaultMessage = 'Bonjour EKOH, je viens de voir votre portfolio et je souhaiterais échanger avec vous.';
+  const defaultMessage = 'Bonjour ETSIN EKOH, je viens de voir votre portfolio et je souhaiterais échanger avec vous.';
   const emailSubject = 'Message depuis le portfolio';
 
   const contactForm = document.querySelector('.contact-form');
