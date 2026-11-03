@@ -35,4 +35,4 @@ Portfolio de Francis EKOH ETSIN, développeur agentique (web, données et IA) à
 python -m http.server 8765
 ```
 
-Puis ouvrir http://127.0.0.1:8765
+Puis ouvrir <http://127.0.0.1:8765>.
