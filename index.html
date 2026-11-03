@@ -118,7 +118,9 @@
           <div>
             <p class="section-tag">À propos</p>
             <h2>Mon parcours et ma philosophie</h2>
-            <img class="about-photo" src="assets/images/portrait-jardin.webp" width="700" height="938" loading="lazy" alt="EKOH ETSIN, assis sur un muret dans un jardin" />
+            <button class="lightbox-trigger lightbox-trigger--about" type="button" data-full="assets/images/portrait-jardin-hd.webp" aria-label="Agrandir la photo : EKOH ETSIN, assis sur un muret dans un jardin">
+              <img class="about-photo" src="assets/images/portrait-jardin.webp" width="700" height="938" loading="lazy" alt="EKOH ETSIN, assis sur un muret dans un jardin" />
+            </button>
           </div>
           <div class="about-copy">
             <p>
@@ -149,15 +151,21 @@
           <h2 id="gallery-title">Un peu de moi.</h2>
           <div class="gallery-grid">
             <figure class="gallery-item">
-              <img src="assets/images/galerie-setup.webp" width="700" height="869" loading="lazy" alt="EKOH ETSIN à son poste informatique, casque autour du cou" />
+              <button class="lightbox-trigger" type="button" data-full="assets/images/galerie-setup-hd.webp" aria-label="Agrandir la photo : passionné de technologie">
+                <img src="assets/images/galerie-setup.webp" width="700" height="869" loading="lazy" alt="EKOH ETSIN à son poste informatique, casque autour du cou" />
+              </button>
               <figcaption>Passionné de technologie</figcaption>
             </figure>
             <figure class="gallery-item">
-              <img src="assets/images/galerie-reflexion.webp" width="700" height="516" loading="lazy" alt="EKOH ETSIN de profil, concentré, les yeux fermés" />
+              <button class="lightbox-trigger" type="button" data-full="assets/images/galerie-reflexion-hd.webp" aria-label="Agrandir la photo : réfléchir avant de coder">
+                <img src="assets/images/galerie-reflexion.webp" width="700" height="516" loading="lazy" alt="EKOH ETSIN de profil, concentré, les yeux fermés" />
+              </button>
               <figcaption>Réfléchir avant de coder</figcaption>
             </figure>
             <figure class="gallery-item">
-              <img src="assets/images/galerie-champ.webp" width="700" height="1254" loading="lazy" alt="EKOH ETSIN debout dans un champ de fleurs jaunes" />
+              <button class="lightbox-trigger" type="button" data-full="assets/images/galerie-champ-hd.webp" aria-label="Agrandir la photo : prendre du recul">
+                <img src="assets/images/galerie-champ.webp" width="700" height="1254" loading="lazy" alt="EKOH ETSIN debout dans un champ de fleurs jaunes" />
+              </button>
               <figcaption>Prendre du recul</figcaption>
             </figure>
           </div>
@@ -472,6 +480,24 @@
           </section>
         </div>
       </div>
+    </dialog>
+
+    <dialog class="lightbox" id="lightbox" aria-label="Photo agrandie">
+      <div class="lightbox__toolbar">
+        <span class="lightbox__counter" aria-live="polite"></span>
+        <div class="lightbox__zoom" role="group" aria-label="Zoom">
+          <button class="lightbox__button" type="button" data-zoom="out" aria-label="Dézoomer">−</button>
+          <button class="lightbox__level" type="button" data-zoom="reset" aria-label="Revenir à la taille normale">100 %</button>
+          <button class="lightbox__button" type="button" data-zoom="in" aria-label="Zoomer">+</button>
+        </div>
+        <button class="lightbox__button" type="button" data-action="close" aria-label="Fermer la photo">×</button>
+      </div>
+      <div class="lightbox__stage">
+        <img class="lightbox__image" alt="" draggable="false" />
+        <button class="lightbox__nav lightbox__nav--prev" type="button" data-action="prev" aria-label="Photo précédente">‹</button>
+        <button class="lightbox__nav lightbox__nav--next" type="button" data-action="next" aria-label="Photo suivante">›</button>
+      </div>
+      <p class="lightbox__caption"></p>
     </dialog>
 
     <script src="js/script.js"></script>

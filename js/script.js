@@ -174,4 +174,144 @@ const initializePortfolio = () => {
   }
 };
 
+const initializeLightbox = () => {
+  const lightbox = document.querySelector('#lightbox');
+  const triggers = Array.from(document.querySelectorAll('.lightbox-trigger'));
+
+  if (!lightbox || triggers.length === 0 || typeof lightbox.showModal !== 'function') {
+    return;
+  }
+
+  const stage = lightbox.querySelector('.lightbox__stage');
+  const image = lightbox.querySelector('.lightbox__image');
+  const counter = lightbox.querySelector('.lightbox__counter');
+  const caption = lightbox.querySelector('.lightbox__caption');
+  const level = lightbox.querySelector('.lightbox__level');
+  const MIN_SCALE = 1;
+  const MAX_SCALE = 4;
+  const ZOOM_STEP = 1.25;
+  const pointers = new Map();
+  let currentIndex = 0;
+  let scale = 1;
+  let offsetX = 0;
+  let offsetY = 0;
+  let gesture = null;
+
+  const clamp = (value, min, max) => Math.min(Math.max(value, min), max);
+
+  const clampOffsets = () => {
+    const maxX = Math.max(0, (image.offsetWidth * scale - stage.clientWidth) / 2);
+    const maxY = Math.max(0, (image.offsetHeight * scale - stage.clientHeight) / 2);
+    offsetX = clamp(offsetX, -maxX, maxX);
+    offsetY = clamp(offsetY, -maxY, maxY);
+  };
+
+  const render = () => {
+    clampOffsets();
+    image.style.transform = `translate(${offsetX}px, ${offsetY}px) scale(${scale})`;
+    image.classList.toggle('is-zoomed', scale > MIN_SCALE);
+    level.textContent = `${Math.round(scale * 100)} %`;
+  };
+
+  const setScale = (nextScale) => {
+    scale = clamp(nextScale, MIN_SCALE, MAX_SCALE);
+    if (scale === MIN_SCALE) {
+      offsetX = 0;
+      offsetY = 0;
+    }
+    render();
+  };
+
+  const show = (index) => {
+    currentIndex = (index + triggers.length) % triggers.length;
+    const trigger = triggers[currentIndex];
+    const thumbnail = trigger.querySelector('img');
+    const figcaption = trigger.closest('figure')?.querySelector('figcaption');
+    image.src = trigger.dataset.full || thumbnail.src;
+    image.alt = thumbnail.alt;
+    caption.textContent = figcaption ? figcaption.textContent : thumbnail.alt;
+    counter.textContent = `${currentIndex + 1} / ${triggers.length}`;
+    setScale(MIN_SCALE);
+  };
+
+  const actions = {
+    in: () => setScale(scale * ZOOM_STEP),
+    out: () => setScale(scale / ZOOM_STEP),
+    reset: () => setScale(MIN_SCALE),
+    prev: () => show(currentIndex - 1),
+    next: () => show(currentIndex + 1),
+    close: () => lightbox.close()
+  };
+
+  triggers.forEach((trigger, index) => {
+    trigger.addEventListener('click', () => {
+      show(index);
+      lightbox.showModal();
+    });
+  });
+
+  lightbox.addEventListener('click', (event) => {
+    const button = event.target.closest('[data-zoom], [data-action]');
+    if (button) {
+      actions[button.dataset.zoom || button.dataset.action]();
+    } else if (event.target === stage || event.target === lightbox) {
+      lightbox.close();
+    }
+  });
+
+  lightbox.addEventListener('keydown', (event) => {
+    const keyActions = { ArrowLeft: 'prev', ArrowRight: 'next', '+': 'in', '=': 'in', '-': 'out', 0: 'reset' };
+    const action = keyActions[event.key];
+    if (action) {
+      event.preventDefault();
+      actions[action]();
+    }
+  });
+
+  stage.addEventListener('wheel', (event) => {
+    event.preventDefault();
+    setScale(event.deltaY < 0 ? scale * ZOOM_STEP : scale / ZOOM_STEP);
+  }, { passive: false });
+
+  image.addEventListener('dblclick', () => setScale(scale > MIN_SCALE ? MIN_SCALE : 2.5));
+
+  const distanceBetweenPointers = () => {
+    const [first, second] = [...pointers.values()];
+    return Math.hypot(first.x - second.x, first.y - second.y);
+  };
+
+  image.addEventListener('pointerdown', (event) => {
+    image.setPointerCapture(event.pointerId);
+    pointers.set(event.pointerId, { x: event.clientX, y: event.clientY });
+    gesture = pointers.size === 2
+      ? { type: 'pinch', distance: distanceBetweenPointers(), scale }
+      : { type: 'pan', x: event.clientX - offsetX, y: event.clientY - offsetY };
+  });
+
+  image.addEventListener('pointermove', (event) => {
+    if (!pointers.has(event.pointerId) || !gesture) {
+      return;
+    }
+    pointers.set(event.pointerId, { x: event.clientX, y: event.clientY });
+    if (gesture.type === 'pinch' && pointers.size === 2) {
+      setScale(gesture.scale * (distanceBetweenPointers() / gesture.distance));
+    } else if (gesture.type === 'pan' && scale > MIN_SCALE) {
+      image.classList.add('is-dragging');
+      offsetX = event.clientX - gesture.x;
+      offsetY = event.clientY - gesture.y;
+      render();
+    }
+  });
+
+  const endPointer = (event) => {
+    pointers.delete(event.pointerId);
+    image.classList.remove('is-dragging');
+    gesture = null;
+  };
+
+  image.addEventListener('pointerup', endPointer);
+  image.addEventListener('pointercancel', endPointer);
+};
+
 initializePortfolio();
+initializeLightbox();
