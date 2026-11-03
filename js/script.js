@@ -313,5 +313,23 @@ const initializeLightbox = () => {
   image.addEventListener('pointercancel', endPointer);
 };
 
+const initializeCardGlow = () => {
+  const canHover = window.matchMedia('(hover: hover)').matches;
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (!canHover || prefersReducedMotion) {
+    return;
+  }
+
+  document.querySelectorAll('.skill-card, .project-card').forEach((card) => {
+    card.addEventListener('pointermove', (event) => {
+      const rect = card.getBoundingClientRect();
+      card.style.setProperty('--glow-x', `${event.clientX - rect.left}px`);
+      card.style.setProperty('--glow-y', `${event.clientY - rect.top}px`);
+    });
+  });
+};
+
 initializePortfolio();
 initializeLightbox();
+initializeCardGlow();

@@ -11,6 +11,9 @@
   --accent-soft: rgba(144, 176, 199, 0.14);
   --border: rgba(200, 218, 232, 0.18);
   --shadow: 0 20px 45px rgba(0, 0, 0, 0.45);
+  --glow-ring: rgba(226, 238, 248, 1);
+  --glow-fill: rgba(144, 176, 199, 0.14);
+  --glow-halo: rgba(144, 176, 199, 0.28);
   --profile-bg: #f1eefb;
   --profile-card: #ffffff;
   --profile-ink: #1f1d3a;
@@ -595,6 +598,39 @@ a {
     transform: translateY(-5px);
     border-color: rgba(144, 176, 199, 0.45);
     box-shadow: 0 18px 35px rgba(4, 12, 24, 0.45);
+  }
+}
+
+.skill-card::after,
+.project-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  padding: 2px;
+  border-radius: inherit;
+  background:
+    radial-gradient(320px circle at var(--glow-x, 50%) var(--glow-y, 50%), var(--glow-ring), transparent 55%);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .skill-card:hover,
+  .project-card:hover {
+    background:
+      radial-gradient(420px circle at var(--glow-x, 50%) var(--glow-y, 50%), var(--glow-fill), transparent 45%),
+      linear-gradient(180deg, rgba(20, 31, 48, 0.96), rgba(14, 22, 35, 0.96));
+    box-shadow: 0 18px 35px rgba(4, 12, 24, 0.45), 0 0 28px var(--glow-halo);
+  }
+
+  .skill-card:hover::after,
+  .project-card:hover::after {
+    opacity: 1;
   }
 }
 
