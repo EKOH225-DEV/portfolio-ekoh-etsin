@@ -100,7 +100,10 @@
           </div>
 
           <figure class="hero__photo">
-            <img src="assets/images/portrait-studio.webp" width="800" height="1200" fetchpriority="high" alt="EKOH ETSIN, assis, souriant, en sweat noir" />
+            <button class="profile-trigger" type="button" aria-haspopup="dialog" aria-controls="profile-dialog">
+              <img src="assets/images/portrait-studio.webp" width="800" height="1200" fetchpriority="high" alt="EKOH ETSIN, assis, souriant, en sweat noir" />
+              <span class="profile-trigger__hint">Voir mon profil</span>
+            </button>
           </figure>
         </div>
       </section>
@@ -110,7 +113,10 @@
           <div>
             <p class="section-tag">À propos</p>
             <h2>Mon parcours et ma philosophie</h2>
-            <img class="about-photo" src="assets/images/portrait-jardin.webp" width="700" height="938" loading="lazy" alt="EKOH ETSIN, assis sur un muret dans un jardin" />
+            <button class="profile-trigger profile-trigger--about" type="button" aria-haspopup="dialog" aria-controls="profile-dialog">
+              <img class="about-photo" src="assets/images/portrait-jardin.webp" width="700" height="938" loading="lazy" alt="EKOH ETSIN, assis sur un muret dans un jardin" />
+              <span class="profile-trigger__hint">Voir mon profil</span>
+            </button>
           </div>
           <div class="about-copy">
             <p>
@@ -353,6 +359,116 @@
         </div>
       </div>
     </footer>
+
+    <dialog class="profile-dialog" id="profile-dialog" aria-labelledby="profile-dialog-title">
+      <div class="profile-dialog__inner">
+        <header class="profile-dialog__header">
+          <h2 id="profile-dialog-title">Mon profil</h2>
+          <button class="profile-dialog__close" type="button" aria-label="Fermer le profil">×</button>
+        </header>
+
+        <section class="profile-card profile-identity">
+          <img class="profile-identity__photo" src="assets/images/portrait-studio.webp" width="800" height="1200" loading="lazy" alt="" />
+          <div>
+            <h3>EKOH ETSIN Francis</h3>
+            <p class="profile-identity__role">Développeur agentique · Web, données et IA</p>
+            <ul class="profile-info">
+              <li>
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 10 12 5 2 10l10 5 10-5Z" /><path d="M6 12v5c3 3 9 3 12 0v-5" /></svg>
+                BTS Informatique, major de promotion
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" /><circle cx="12" cy="10" r="3" /></svg>
+                Abidjan, Côte d'Ivoire
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2" /><path d="m22 7-10 5L2 7" /></svg>
+                <a href="mailto:etsin.ekohdev@gmail.com">etsin.ekohdev@gmail.com</a>
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2Z" /></svg>
+                <a href="tel:+2250555585675">+225 05 55 58 56 75</a>
+              </li>
+            </ul>
+            <div class="profile-links">
+              <a href="https://github.com/EKOH225-DEV" target="_blank" rel="noreferrer">GitHub</a>
+              <a href="https://wa.me/2250555585675" target="_blank" rel="noreferrer">WhatsApp</a>
+              <a href="assets/docs/CV_EKOH_ETSIN.pdf" target="_blank" rel="noopener">CV (PDF)</a>
+            </div>
+          </div>
+        </section>
+
+        <div class="profile-columns">
+          <section class="profile-card">
+            <h3>Mes formations</h3>
+            <ol class="profile-timeline">
+              <li class="profile-timeline__item">
+                <div>
+                  <strong>BTS Informatique, développeur d'application</strong>
+                  <span>IS2G · major de promotion, 15,85/20</span>
+                </div>
+                <span class="profile-badge profile-badge--done">Terminé</span>
+              </li>
+              <li class="profile-timeline__item">
+                <div>
+                  <strong>Analyse de données</strong>
+                  <span>Formation en cours</span>
+                </div>
+                <span class="profile-badge profile-badge--progress">En cours</span>
+              </li>
+              <li class="profile-timeline__item">
+                <div>
+                  <strong>Cybersécurité</strong>
+                  <span>Formation en cours</span>
+                </div>
+                <span class="profile-badge profile-badge--progress">En cours</span>
+              </li>
+              <li class="profile-timeline__item">
+                <div>
+                  <strong>Développement assisté par l'IA</strong>
+                  <span>Agents d'IA, automatisation, Claude Code</span>
+                </div>
+                <span class="profile-badge profile-badge--progress">En cours</span>
+              </li>
+            </ol>
+          </section>
+
+          <section class="profile-card">
+            <h3>Activité récente</h3>
+            <ul class="profile-activity">
+              <li>
+                <div>
+                  <strong>Vérification publique par QR code</strong>
+                  <span>SAFE-SECURITE · fonctionnalité terminée</span>
+                </div>
+                <time datetime="2026-10-25">Oct. 2026</time>
+              </li>
+              <li>
+                <div>
+                  <strong>Attestations PDF avec QR code</strong>
+                  <span>SAFE-SECURITE · fonctionnalité terminée</span>
+                </div>
+                <time datetime="2026-10-23">Oct. 2026</time>
+              </li>
+              <li>
+                <div>
+                  <strong>Gestion des agents de sécurité</strong>
+                  <span>SAFE-SECURITE · fonctionnalité terminée</span>
+                </div>
+                <time datetime="2026-10-21">Oct. 2026</time>
+              </li>
+              <li>
+                <div>
+                  <strong>BTS obtenu, major de promotion</strong>
+                  <span>IS2G · 15,85/20</span>
+                </div>
+                <time datetime="2026-08">Août 2026</time>
+              </li>
+            </ul>
+          </section>
+        </div>
+      </div>
+    </dialog>
 
     <script src="js/script.js"></script>
   </body>

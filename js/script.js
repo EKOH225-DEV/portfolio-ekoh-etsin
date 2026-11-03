@@ -160,6 +160,24 @@ const initializePortfolio = () => {
   } else {
     revealElements.forEach((element) => element.classList.add('is-visible'));
   }
+
+  const profileDialog = document.querySelector('#profile-dialog');
+  const profileTriggers = document.querySelectorAll('.profile-trigger');
+  const profileClose = document.querySelector('.profile-dialog__close');
+
+  if (profileDialog && profileClose && typeof profileDialog.showModal === 'function') {
+    profileTriggers.forEach((trigger) => {
+      trigger.addEventListener('click', () => profileDialog.showModal());
+    });
+
+    profileClose.addEventListener('click', () => profileDialog.close());
+
+    profileDialog.addEventListener('click', (event) => {
+      if (event.target === profileDialog) {
+        profileDialog.close();
+      }
+    });
+  }
 };
 
 initializePortfolio();
