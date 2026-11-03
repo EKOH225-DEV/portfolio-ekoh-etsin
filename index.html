@@ -118,10 +118,7 @@
           <div>
             <p class="section-tag">À propos</p>
             <h2>Mon parcours et ma philosophie</h2>
-            <button class="profile-trigger profile-trigger--about" type="button" aria-haspopup="dialog" aria-controls="profile-dialog">
-              <img class="about-photo" src="assets/images/portrait-jardin.webp" width="700" height="938" loading="lazy" alt="EKOH ETSIN, assis sur un muret dans un jardin" />
-              <span class="profile-trigger__hint">Voir mon profil</span>
-            </button>
+            <img class="about-photo" src="assets/images/portrait-jardin.webp" width="700" height="938" loading="lazy" alt="EKOH ETSIN, assis sur un muret dans un jardin" />
           </div>
           <div class="about-copy">
             <p>
@@ -344,7 +341,7 @@
             </div>
             <form class="contact-form" action="https://formspree.io/f/mzezznqe" method="POST">
               <input type="hidden" name="_subject" value="Nouveau message depuis le portfolio" />
-              <input class="sr-only" type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" />
+              <input class="form-honeypot" type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" />
               <label>Nom complet<input type="text" name="name" placeholder="Votre nom" autocomplete="name" maxlength="100" required /></label>
               <label>Email<input type="email" name="email" placeholder="votre@email.com" autocomplete="email" maxlength="150" required /></label>
               <label class="form-message">Message<textarea name="message" placeholder="Bonjour, je souhaiterais échanger avec vous concernant un projet..." maxlength="3000" required></textarea></label>

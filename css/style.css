@@ -1119,16 +1119,6 @@ a {
   cursor: pointer;
 }
 
-.profile-trigger--about {
-  width: auto;
-  max-width: 280px;
-  margin-top: 1.5rem;
-}
-
-.profile-trigger--about .about-photo {
-  margin-top: 0;
-}
-
 .profile-trigger__hint {
   position: absolute;
   left: 50%;
@@ -1422,4 +1412,8 @@ a {
   .profile-card {
     padding: 1.1rem;
   }
+}
+
+.contact-form .form-honeypot {
+  display: none;
 }
