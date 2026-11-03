@@ -556,6 +556,27 @@ a {
   margin-top: 1.5rem;
 }
 
+.project-card--featured {
+  grid-column: 1 / -1;
+  border-color: var(--accent);
+}
+
+.project-card .project-features {
+  display: grid;
+  gap: 0.4rem;
+  margin: 1rem 0;
+  padding-left: 1.2rem;
+  list-style: disc;
+}
+
+.project-card .project-features li {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
 .skill-card,
 .project-card {
   position: relative;
