@@ -59,10 +59,19 @@ const initializePortfolio = () => {
 
     whatsappClose.addEventListener('click', () => setChatState(false));
 
+    const channelStatus = {
+      whatsapp: 'WhatsApp s’ouvre : appuyez sur « Envoyer » pour me transmettre votre message.',
+      email: 'Votre messagerie s’ouvre : il ne reste qu’à envoyer l’e-mail.'
+    };
+
     channelButtons.forEach((button) => {
       button.addEventListener('click', () => {
         selectedChannel = button.dataset.channel;
-        channelButtons.forEach((item) => item.classList.toggle('is-selected', item === button));
+        channelButtons.forEach((item) => {
+          const isSelected = item === button;
+          item.classList.toggle('is-selected', isSelected);
+          item.setAttribute('aria-pressed', String(isSelected));
+        });
         whatsappStatus.textContent = '';
       });
     });
@@ -76,12 +85,14 @@ const initializePortfolio = () => {
       }
 
       const encodedMessage = encodeURIComponent(message);
-      const destination = selectedChannel === 'email'
-        ? `mailto:${contactEmail}?subject=${encodeURIComponent('Message depuis le portfolio')}&body=${encodedMessage}`
-        : `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
 
-      window.open(destination, '_blank', 'noopener,noreferrer');
-      whatsappStatus.textContent = 'Envoyé';
+      if (selectedChannel === 'email') {
+        window.location.href = `mailto:${contactEmail}?subject=${encodeURIComponent('Message depuis le portfolio')}&body=${encodedMessage}`;
+      } else {
+        window.open(`https://wa.me/${whatsappNumber}?text=${encodedMessage}`, '_blank', 'noopener,noreferrer');
+      }
+
+      whatsappStatus.textContent = channelStatus[selectedChannel];
       whatsappInput.value = '';
     });
   }

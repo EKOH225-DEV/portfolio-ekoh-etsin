@@ -41,13 +41,18 @@
           <p class="whatsapp-status" role="status" aria-live="polite"></p>
         </div>
         <form class="whatsapp-chat__form">
-          <label class="sr-only" for="whatsapp-message">Votre message</label>
-          <input id="whatsapp-message" name="message" type="text" placeholder="Écrire un message..." autocomplete="off" required />
           <div class="contact-channel" role="group" aria-label="Choisir le canal de contact">
-            <button class="contact-channel__button is-selected" type="button" data-channel="whatsapp">WhatsApp</button>
-            <button class="contact-channel__button" type="button" data-channel="email">Email</button>
+            <span class="contact-channel__label">Envoyer via</span>
+            <button class="contact-channel__button is-selected" type="button" data-channel="whatsapp" aria-pressed="true">WhatsApp</button>
+            <button class="contact-channel__button" type="button" data-channel="email" aria-pressed="false">E-mail</button>
           </div>
-          <button type="submit" aria-label="Envoyer le message">➤</button>
+          <div class="whatsapp-chat__compose">
+            <label class="sr-only" for="whatsapp-message">Votre message</label>
+            <input id="whatsapp-message" name="message" type="text" placeholder="Écrire un message..." autocomplete="off" maxlength="1000" required />
+            <button class="whatsapp-send" type="submit" aria-label="Envoyer le message">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m22 2-7 20-4-9-9-4Z" /><path d="M22 2 11 13" /></svg>
+            </button>
+          </div>
         </form>
       </section>
     </div>
@@ -338,9 +343,11 @@
               <a href="https://github.com/EKOH225-DEV" target="_blank" rel="noreferrer">◉ &nbsp; github.com/EKOH225-DEV</a>
             </div>
             <form class="contact-form" action="https://formspree.io/f/mzezznqe" method="POST">
-              <label>Nom complet<input type="text" name="name" placeholder="Votre nom" /></label>
-              <label>Email<input type="email" name="email" placeholder="votre@email.com" /></label>
-              <label class="form-message">Message<textarea name="message" placeholder="Bonjour, je souhaiterais échanger avec vous concernant un projet..."></textarea></label>
+              <input type="hidden" name="_subject" value="Nouveau message depuis le portfolio" />
+              <input class="sr-only" type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" />
+              <label>Nom complet<input type="text" name="name" placeholder="Votre nom" autocomplete="name" maxlength="100" required /></label>
+              <label>Email<input type="email" name="email" placeholder="votre@email.com" autocomplete="email" maxlength="150" required /></label>
+              <label class="form-message">Message<textarea name="message" placeholder="Bonjour, je souhaiterais échanger avec vous concernant un projet..." maxlength="3000" required></textarea></label>
               <p class="contact-form__status" role="status" aria-live="polite"></p>
               <button class="btn btn--primary" type="submit">Envoyer le message</button>
             </form>
