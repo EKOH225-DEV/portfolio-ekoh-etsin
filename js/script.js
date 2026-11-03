@@ -6,7 +6,7 @@ const initializePortfolio = () => {
   const whatsappInput = document.querySelector('#whatsapp-message');
   const whatsappStatus = document.querySelector('.whatsapp-status');
   const channelButtons = document.querySelectorAll('.contact-channel__button');
-  const whatsappNumber = '2250555595675';
+  const whatsappNumber = '2250555585675';
   const contactEmail = 'etsin.ekohdev@gmail.com';
   let selectedChannel = 'whatsapp';
 
@@ -160,30 +160,6 @@ const initializePortfolio = () => {
   } else {
     revealElements.forEach((element) => element.classList.add('is-visible'));
   }
-
-  const sliderTrack = document.querySelector('.photo-slider__track');
-  const slides = Array.from(document.querySelectorAll('.photo-slide'));
-
-  if (!sliderTrack || slides.length === 0) {
-    return;
-  }
-
-  let currentIndex = 0;
-
-  const updateSlider = () => {
-    sliderTrack.style.transform = `translateX(-${currentIndex * 100}%)`;
-
-    slides.forEach((slide, index) => {
-      slide.classList.toggle('is-active', index === currentIndex);
-    });
-  };
-
-  window.setInterval(() => {
-    currentIndex = (currentIndex + 1) % slides.length;
-    updateSlider();
-  }, 3500);
-
-  updateSlider();
 };
 
 initializePortfolio();

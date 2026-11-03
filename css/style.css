@@ -548,41 +548,6 @@ a {
   color: var(--muted);
 }
 
-.gallery-section {
-  overflow: hidden;
-}
-
-.photo-slider {
-  position: relative;
-  width: 100%;
-  max-width: 1100px;
-  margin-top: 1.5rem;
-  border-radius: 0.35rem;
-  overflow: hidden;
-  border: 1px solid var(--border);
-  background: rgba(7, 13, 22, 0.9);
-  box-shadow: var(--shadow);
-}
-
-.photo-slider__track {
-  display: flex;
-  transition: transform 0.9s ease;
-}
-
-.photo-slide {
-  min-width: 100%;
-  margin: 0;
-}
-
-.photo-slide img {
-  display: block;
-  width: 100%;
-  height: clamp(360px, 48vw, 620px);
-  object-fit: cover;
-  object-position: center;
-  filter: grayscale(100%) contrast(1.08);
-}
-
 .skills-grid,
 .project-grid {
   display: grid;
