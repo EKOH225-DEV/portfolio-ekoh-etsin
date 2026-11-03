@@ -2,13 +2,14 @@ const initializePortfolio = () => {
   const whatsappToggle = document.querySelector('.whatsapp-toggle');
   const whatsappClose = document.querySelector('.whatsapp-close');
   const whatsappChat = document.querySelector('.whatsapp-chat');
-  const whatsappForm = document.querySelector('.whatsapp-chat__form');
   const whatsappInput = document.querySelector('#whatsapp-message');
   const whatsappStatus = document.querySelector('.whatsapp-status');
-  const channelButtons = document.querySelectorAll('.contact-channel__button');
+  const whatsappLink = document.querySelector('.contact-direct__link[data-channel="whatsapp"]');
+  const emailLink = document.querySelector('.contact-direct__link[data-channel="email"]');
   const whatsappNumber = '2250555585675';
   const contactEmail = 'etsin.ekohdev@gmail.com';
-  let selectedChannel = 'whatsapp';
+  const defaultMessage = 'Bonjour EKOH, je viens de voir votre portfolio et je souhaiterais échanger avec vous.';
+  const emailSubject = 'Message depuis le portfolio';
 
   const contactForm = document.querySelector('.contact-form');
   const contactFormStatus = document.querySelector('.contact-form__status');
@@ -52,7 +53,7 @@ const initializePortfolio = () => {
     whatsappToggle.setAttribute('aria-expanded', String(isOpen));
   };
 
-  if (whatsappToggle && whatsappClose && whatsappChat && whatsappForm && whatsappInput && whatsappStatus) {
+  if (whatsappToggle && whatsappClose && whatsappChat && whatsappInput && whatsappStatus && whatsappLink && emailLink) {
     whatsappToggle.addEventListener('click', () => {
       setChatState(!whatsappChat.classList.contains('is-open'));
     });
@@ -64,37 +65,19 @@ const initializePortfolio = () => {
       email: 'Votre messagerie s’ouvre : il ne reste qu’à envoyer l’e-mail.'
     };
 
-    channelButtons.forEach((button) => {
-      button.addEventListener('click', () => {
-        selectedChannel = button.dataset.channel;
-        channelButtons.forEach((item) => {
-          const isSelected = item === button;
-          item.classList.toggle('is-selected', isSelected);
-          item.setAttribute('aria-pressed', String(isSelected));
-        });
-        whatsappStatus.textContent = '';
+    const updateContactLinks = () => {
+      const message = encodeURIComponent(whatsappInput.value.trim() || defaultMessage);
+      whatsappLink.href = `https://wa.me/${whatsappNumber}?text=${message}`;
+      emailLink.href = `mailto:${contactEmail}?subject=${encodeURIComponent(emailSubject)}&body=${message}`;
+    };
+
+    whatsappInput.addEventListener('input', updateContactLinks);
+    [whatsappLink, emailLink].forEach((link) => {
+      link.addEventListener('click', () => {
+        whatsappStatus.textContent = channelStatus[link.dataset.channel];
       });
     });
-
-    whatsappForm.addEventListener('submit', (event) => {
-      event.preventDefault();
-      const message = whatsappInput.value.trim();
-
-      if (!message) {
-        return;
-      }
-
-      const encodedMessage = encodeURIComponent(message);
-
-      if (selectedChannel === 'email') {
-        window.location.href = `mailto:${contactEmail}?subject=${encodeURIComponent('Message depuis le portfolio')}&body=${encodedMessage}`;
-      } else {
-        window.open(`https://wa.me/${whatsappNumber}?text=${encodedMessage}`, '_blank', 'noopener,noreferrer');
-      }
-
-      whatsappStatus.textContent = channelStatus[selectedChannel];
-      whatsappInput.value = '';
-    });
+    updateContactLinks();
   }
 
   const codeRain = document.querySelector('.code-rain');

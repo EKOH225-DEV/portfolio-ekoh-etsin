@@ -184,71 +184,50 @@ a {
   background: var(--panel);
 }
 
-.contact-channel {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.contact-channel__label {
-  margin-right: auto;
-  color: var(--muted);
-  font-size: 0.8rem;
-}
-
-.contact-channel__button {
-  min-height: 2.25rem;
-  border: 1px solid var(--border);
-  border-radius: 999px;
-  padding: 0.4rem 0.9rem;
-  color: var(--text);
-  background: transparent;
-  font: inherit;
-  font-size: 0.85rem;
-  font-weight: 600;
-  cursor: pointer;
-}
-
-.contact-channel__button.is-selected {
-  border-color: var(--accent);
-  color: var(--bg);
-  background: var(--accent);
-}
-
-.whatsapp-chat__compose {
-  display: flex;
-  gap: 0.5rem;
-}
-
-.whatsapp-chat__compose input {
-  flex: 1;
-  min-width: 0;
-  min-height: 2.75rem;
+.whatsapp-chat__form textarea {
+  width: 100%;
+  min-height: 3.5rem;
   border: 1px solid var(--border);
   border-radius: 0.5rem;
-  padding: 0 0.85rem;
+  padding: 0.7rem 0.85rem;
   color: var(--text);
   background: var(--bg-soft);
   font: inherit;
   font-size: 0.9rem;
+  resize: vertical;
 }
 
-.whatsapp-send {
+.contact-direct {
   display: grid;
-  place-items: center;
-  flex: none;
-  width: 2.75rem;
-  height: 2.75rem;
-  border: 0;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+}
+
+.contact-direct__link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  min-height: 2.75rem;
+  padding: 0.5rem 0.6rem;
+  border: 1px solid var(--accent);
   border-radius: 0.5rem;
   color: var(--bg);
   background: var(--accent);
-  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-align: center;
 }
 
-.whatsapp-send svg {
-  width: 1.15rem;
-  height: 1.15rem;
+.contact-direct__link[data-channel="email"] {
+  color: var(--text);
+  background: transparent;
+}
+
+.contact-direct__link svg {
+  flex: none;
+  width: 1.1rem;
+  height: 1.1rem;
   fill: none;
   stroke: currentColor;
   stroke-width: 2;
@@ -256,9 +235,8 @@ a {
   stroke-linejoin: round;
 }
 
-.contact-channel__button:focus-visible,
-.whatsapp-send:focus-visible,
-.whatsapp-chat__compose input:focus-visible {
+.contact-direct__link:focus-visible,
+.whatsapp-chat__form textarea:focus-visible {
   outline: 2px solid var(--text);
   outline-offset: 2px;
 }

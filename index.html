@@ -32,28 +32,28 @@
         <div class="whatsapp-chat__header">
           <div>
             <strong>EKOH ETSIN</strong>
-            <span>Disponible sur WhatsApp</span>
+            <span>Répond sur WhatsApp et par e-mail</span>
           </div>
           <button class="whatsapp-close" type="button" aria-label="Fermer la conversation">×</button>
         </div>
         <div class="whatsapp-chat__body">
-          <p class="whatsapp-message">Bonjour ! Comment puis-je vous aider ?</p>
+          <p class="whatsapp-message">Bonjour ! Écrivez votre message, puis choisissez WhatsApp ou e-mail pour me l’envoyer.</p>
           <p class="whatsapp-status" role="status" aria-live="polite"></p>
         </div>
-        <form class="whatsapp-chat__form">
-          <div class="contact-channel" role="group" aria-label="Choisir le canal de contact">
-            <span class="contact-channel__label">Envoyer via</span>
-            <button class="contact-channel__button is-selected" type="button" data-channel="whatsapp" aria-pressed="true">WhatsApp</button>
-            <button class="contact-channel__button" type="button" data-channel="email" aria-pressed="false">E-mail</button>
+        <div class="whatsapp-chat__form">
+          <label class="sr-only" for="whatsapp-message">Votre message (facultatif)</label>
+          <textarea id="whatsapp-message" name="message" rows="2" placeholder="Écrire un message (facultatif)..." maxlength="1000"></textarea>
+          <div class="contact-direct">
+            <a class="contact-direct__link" data-channel="whatsapp" href="https://wa.me/2250555585675" target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-12.4 7.4L3 21l2.1-5.4A8.4 8.4 0 1 1 21 11.5Z" /></svg>
+              WhatsApp
+            </a>
+            <a class="contact-direct__link" data-channel="email" href="mailto:etsin.ekohdev@gmail.com">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2" /><path d="m22 7-10 5L2 7" /></svg>
+              E-mail
+            </a>
           </div>
-          <div class="whatsapp-chat__compose">
-            <label class="sr-only" for="whatsapp-message">Votre message</label>
-            <input id="whatsapp-message" name="message" type="text" placeholder="Écrire un message..." autocomplete="off" maxlength="1000" required />
-            <button class="whatsapp-send" type="submit" aria-label="Envoyer le message">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m22 2-7 20-4-9-9-4Z" /><path d="M22 2 11 13" /></svg>
-            </button>
-          </div>
-        </form>
+        </div>
       </section>
     </div>
     <header class="site-header">
