@@ -1,3 +1,51 @@
+const initializeMenu = () => {
+  const toggle = document.querySelector('.nav__toggle');
+  const links = document.querySelector('.nav__links');
+
+  if (!toggle || !links) {
+    return;
+  }
+
+  const setOpen = (open) => {
+    links.classList.toggle('is-open', open);
+    toggle.setAttribute('aria-expanded', String(open));
+    toggle.setAttribute('aria-label', open ? 'Fermer le menu' : 'Ouvrir le menu');
+  };
+
+  toggle.addEventListener('click', () => setOpen(!links.classList.contains('is-open')));
+  links.addEventListener('click', (event) => {
+    if (event.target.closest('a')) {
+      setOpen(false);
+    }
+  });
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') {
+      setOpen(false);
+    }
+  });
+  document.addEventListener('click', (event) => {
+    if (!event.target.closest('.nav')) {
+      setOpen(false);
+    }
+  });
+};
+
+// The light along the edges only runs on what is on screen: it saves the
+// battery of a phone.
+const initializeEdgeLight = () => {
+  const blocks = document.querySelectorAll('.skill-card, .project-card, .stat, .contact-box, .hero__photo');
+
+  if (!('IntersectionObserver' in window)) {
+    return;
+  }
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => entry.target.classList.toggle('in-view', entry.isIntersecting));
+  });
+
+  blocks.forEach((block) => observer.observe(block));
+};
+
 const initializePortfolio = () => {
   const whatsappToggle = document.querySelector('.whatsapp-toggle');
   const whatsappClose = document.querySelector('.whatsapp-close');
@@ -330,6 +378,9 @@ const initializeCardGlow = () => {
   });
 };
 
+document.documentElement.classList.add('js');
+initializeMenu();
+initializeEdgeLight();
 initializePortfolio();
 initializeLightbox();
 initializeCardGlow();

@@ -2,7 +2,7 @@
 <html lang="fr">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <meta name="description" content="Portfolio de ETSIN EKOH, développeur agentique (web, données et IA) à Abidjan, major de promotion en BTS Informatique." />
     <title>ETSIN EKOH | Portfolio</title>
     <link rel="canonical" href="https://ekoh225-dev.github.io/portfolio-ekoh-etsin/" />
@@ -59,7 +59,10 @@
     <header class="site-header">
       <nav class="nav container">
         <a href="#home" class="brand"><span class="brand-mark">&lt;/&gt;</span> ETSIN <span>EKOH</span></a>
-        <ul class="nav__links">
+        <button class="nav__toggle" type="button" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="nav-links">
+          <span></span><span></span><span></span>
+        </button>
+        <ul class="nav__links" id="nav-links">
           <li><a href="#about">À propos</a></li>
           <li><a href="#skills">Compétences</a></li>
           <li><a href="#projects">Projets</a></li>
@@ -217,7 +220,7 @@
                 <li>QR code sur chaque attestation et page publique de vérification anti-fraude</li>
                 <li>Gestion des agents : recherche, ajout, modification, désactivation</li>
                 <li>Connexion sécurisée (mots de passe argon2id, limitation des tentatives)</li>
-                <li>Plusieurs centaines de tests unitaires et 32 tests dans un vrai navigateur (Playwright)</li>
+                <li>Plus de 2 400 tests automatisés, dont 52 dans un vrai navigateur (Playwright)</li>
               </ul>
               <ul>
                 <li>Next.js</li>
