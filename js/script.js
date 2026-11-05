@@ -33,7 +33,9 @@ const initializeMenu = () => {
 // The light along the edges only runs on what is on screen: it saves the
 // battery of a phone.
 const initializeEdgeLight = () => {
-  const blocks = document.querySelectorAll('.skill-card, .project-card, .stat, .contact-box, .hero__photo');
+  const blocks = document.querySelectorAll(
+    '.skill-card, .project-card, .stat, .contact-box, .hero__photo, .gallery-item, #contact'
+  );
 
   if (!('IntersectionObserver' in window)) {
     return;
@@ -176,7 +178,7 @@ const initializePortfolio = () => {
   }
 
   const revealElements = document.querySelectorAll(
-    '.section, .skill-card, .project-card, .timeline__item, .contact-box'
+    '.section, .skill-card, .project-card, .timeline__item, .contact-box, .gallery-item, .lightbox-trigger--about'
   );
 
   revealElements.forEach((element) => {
@@ -378,9 +380,34 @@ const initializeCardGlow = () => {
   });
 };
 
+// Depth under the pointer. Nothing on a touch screen: the photo breathes there.
+const initializePhotoTilt = () => {
+  const canHover = window.matchMedia('(hover: hover)').matches;
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (!canHover || prefersReducedMotion) {
+    return;
+  }
+
+  document.querySelectorAll('.gallery-item .lightbox-trigger, .lightbox-trigger--about').forEach((photo) => {
+    photo.addEventListener('pointermove', (event) => {
+      const box = photo.getBoundingClientRect();
+      const x = (event.clientX - box.left) / box.width - 0.5;
+      const y = (event.clientY - box.top) / box.height - 0.5;
+      photo.style.setProperty('--tilt-x', `${(y * -8).toFixed(2)}deg`);
+      photo.style.setProperty('--tilt-y', `${(x * 8).toFixed(2)}deg`);
+    });
+    photo.addEventListener('pointerleave', () => {
+      photo.style.removeProperty('--tilt-x');
+      photo.style.removeProperty('--tilt-y');
+    });
+  });
+};
+
 document.documentElement.classList.add('js');
 initializeMenu();
 initializeEdgeLight();
 initializePortfolio();
 initializeLightbox();
 initializeCardGlow();
+initializePhotoTilt();
