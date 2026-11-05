@@ -2,7 +2,7 @@
 <html lang="fr">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <meta name="description" content="Portfolio de ETSIN EKOH, développeur agentique (web, données et IA) à Abidjan, major de promotion en BTS Informatique." />
     <title>ETSIN EKOH | Portfolio</title>
     <link rel="canonical" href="https://ekoh225-dev.github.io/portfolio-ekoh-etsin/" />
@@ -59,7 +59,10 @@
     <header class="site-header">
       <nav class="nav container">
         <a href="#home" class="brand"><span class="brand-mark">&lt;/&gt;</span> ETSIN <span>EKOH</span></a>
-        <ul class="nav__links">
+        <button class="nav__toggle" type="button" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="nav-links">
+          <span></span><span></span><span></span>
+        </button>
+        <ul class="nav__links" id="nav-links">
           <li><a href="#about">À propos</a></li>
           <li><a href="#skills">Compétences</a></li>
           <li><a href="#projects">Projets</a></li>
@@ -217,7 +220,7 @@
                 <li>QR code sur chaque attestation et page publique de vérification anti-fraude</li>
                 <li>Gestion des agents : recherche, ajout, modification, désactivation</li>
                 <li>Connexion sécurisée (mots de passe argon2id, limitation des tentatives)</li>
-                <li>Plusieurs centaines de tests unitaires et 32 tests dans un vrai navigateur (Playwright)</li>
+                <li>Plus de 2 400 tests automatisés, dont 52 dans un vrai navigateur (Playwright)</li>
               </ul>
               <ul>
                 <li>Next.js</li>
@@ -341,11 +344,12 @@
             Je suis ouvert aux opportunités de collaboration, aux missions freelance et aux postes junior.
             N’hésite pas à me contacter pour échanger.
           </p>
+          <p class="contact-status">Disponible pour de nouveaux projets</p>
           <div class="contact-layout">
             <div class="contact-links">
-              <a href="mailto:etsin.ekohdev@gmail.com">✉ &nbsp; etsin.ekohdev@gmail.com</a>
-              <a href="https://wa.me/2250555585675" target="_blank" rel="noreferrer">◈ &nbsp; WhatsApp</a>
-              <a href="https://github.com/EKOH225-DEV" target="_blank" rel="noreferrer">◉ &nbsp; github.com/EKOH225-DEV</a>
+              <a href="mailto:etsin.ekohdev@gmail.com"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg><span><small>E-mail</small><strong>etsin.ekohdev@gmail.com</strong></span></a>
+              <a href="https://wa.me/2250555585675" target="_blank" rel="noreferrer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 12a8.5 8.5 0 0 1-12.6 7.4L3 21l1.6-5.4A8.5 8.5 0 1 1 21 12Z"/></svg><span><small>WhatsApp</small><strong>+225 05 55 58 56 75</strong></span></a>
+              <a href="https://github.com/EKOH225-DEV" target="_blank" rel="noreferrer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m8 7-5 5 5 5M16 7l5 5-5 5"/></svg><span><small>GitHub</small><strong>EKOH225-DEV</strong></span></a>
             </div>
             <form class="contact-form" action="https://formspree.io/f/mzezznqe" method="POST">
               <input type="hidden" name="_subject" value="Nouveau message depuis le portfolio" />
@@ -362,12 +366,33 @@
     </main>
 
     <footer class="site-footer">
-      <div class="container footer__content footer__content--stacked">
-        <p>© 2026 ETSIN EKOH</p>
-        <div class="footer__contact">
-          <a href="tel:+2250555585675">+225 05 55 58 56 75</a>
-          <a href="https://wa.me/2250555585675" target="_blank" rel="noreferrer">WhatsApp</a>
-          <a href="mailto:etsin.ekohdev@gmail.com">etsin.ekohdev@gmail.com</a>
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <strong>ETSIN EKOH</strong>
+            <p>Développeur agentique à Abidjan. Je conçois des logiciels utiles pour les entreprises ivoiriennes.</p>
+          </div>
+          <nav aria-label="Pied de page">
+            <h3>Navigation</h3>
+            <ul class="footer-list">
+              <li><a href="#about">À propos</a></li>
+              <li><a href="#skills">Compétences</a></li>
+              <li><a href="#projects">Projets</a></li>
+              <li><a href="#experience">Parcours</a></li>
+            </ul>
+          </nav>
+          <div>
+            <h3>Me joindre</h3>
+            <ul class="footer-list">
+              <li><a href="tel:+2250555585675">+225 05 55 58 56 75</a></li>
+              <li><a href="https://wa.me/2250555585675" target="_blank" rel="noreferrer">WhatsApp</a></li>
+              <li><a href="mailto:etsin.ekohdev@gmail.com">etsin.ekohdev@gmail.com</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <span>© 2026 ETSIN EKOH</span>
+          <a class="footer-top" href="#home">Retour en haut</a>
         </div>
       </div>
     </footer>
